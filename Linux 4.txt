@@ -1,0 +1,60 @@
+1. Crie dois usuários utilizando o terminal. Sugestao (Joao e Maria)
+	adduser maria
+	<senha>
+
+	adduser joao
+	<senha>
+
+2 - O que acontece na pasta /home?
+	ls /home
+		Foi criada duas pastas para os respectivos usuarios criados.
+
+3 - O que acontece no perfil destes usuários (/home)? Porque?
+	Conectar a um determinado usuario
+		su <user-name>
+		su maria (su joao)
+	ls /home
+		Foi apresentada as pastas para os respectivos usuarios presentes no sistema.	
+
+4 - O que acontece no diretorio /var/spool/mail? Porque?
+	É a caixa de entrada do usuário. Os e-mails permanecem lá enquanto o usuário decidir não arquivar o e-mail.
+
+5 - O que acontece nos arquivo que gerencia os grupos do sistema operacional? Porque?
+	O comando “gpasswd” é utilizado para administrar grupos no Linux. 
+	Esse comando grava informações nos arquivos “/etc/group” e no “/etc/gshadow”.
+	
+	gpasswd grupo = Cria ou altera a senha do grupo.
+	gpasswd -a usuário grupo = Adiciona o usuário ao grupo.
+	gpasswd -d usuário grupo = Remove o usuário do grupo especificado.
+	gpasswd -A usuário grupo = Torna o usuário administrador do grupo.
+
+6 - O que acontece no arquivo /etc/passwd? Porque?
+	Arquivo etc/passwd
+		Foi criada duas instancias para os respectivos usuarios criados.
+			maria:x:1000:1001: Linux user
+			joao:x:1001:1001: Linux user
+
+7 - Crie uma data de expiração para conta de Maria em 31/07/2020.
+	usermod -e 2020-07-31 maria
+
+8 - Crie um novo grupo de usuário e acrescente Joao a este grupo.
+	groupadd -g group-ID grupoOito
+	adduser joao grupoOito
+
+9. Conecte no perfil de João e crie um arquivo de texto qualquer com conteúdo. Salve o arquivo numa área comum do computador
+10. Agora, conecte ao usuário de Maria.
+11. Tente ver o arquivo criado com o perfil de João. O que aconteceu?
+	Não consegue ter acesso ao arquivo	
+
+12. Use três formas diferentes para reverter essa situação.
+	a) Alterando a permissão do arquivo
+		chmod o=r <directory>/ Atribui permissão
+		chmod o+r <directory>/ Adiciona permissão
+		chmod -R o=rx <directory>/ Mudança de permissão de forma recursiva
+
+	b) Adicionando Maria ao mesmo grupo de João
+		adduser maria grupoOito
+	c) Acrescentando Maria ao grupo de usuários com permissão irrestrita.
+		groupadd -g group-ID grupoDoze
+		adduser maria grupoDoze
+		chmod 570 <directory>/ -R

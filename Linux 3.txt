@@ -1,0 +1,105 @@
+LINUX - LISTA 3
+
+1. No terminal digite os comandos
+a) id
+b) who
+c) whoami
+
+2. Houve alguma diferença nos resultados apresentados? Se sim, quais foram? Se não houve diferença,
+o que deveria, justifique e apresente a diferença entre os comandos.
+	O comando id no Linux é usado para descobrir nomes de usuários e grupos e IDs numéricos (UID ou ID de grupo) 
+	do usuário atual ou de qualquer outro usuário no servidor.
+
+	O comando who é uma ferramenta de impressão de informações sobre os usuários que estão logados no momento.
+
+	O comando whoami permite que os usuários do Linux vejam o usuário conectado no momento.
+
+3. Usando o comando touch, crie um arquivo texto na pasta /home.
+	touch exmaple.txt
+	
+	Criar arquivo e escrever
+	cat > example.txt
+	"Escrita de conteudo"
+	ctrl + C
+
+4. Edite o arquivo texto criado para adicionar a este arquivo um conteudo de texto qualquer com mais
+de uma página. Salve o arquivo.
+	vi example.txt
+	i [INSERT]
+	"Escrita de conteudo"
+	ESC
+	:wq [Salvar e sair]
+
+5. Liste o conteudo do arquivo, no terminal, pausadamente.
+	more example.txt | less
+
+6. Como é possível listar no terminal o conteúdo deste arquivo a partir da 25º linha?	
+	Imprimir determinada linha a partir de um arquivo
+	cat -n example.txt | grep -n ^ | grep ^3 | cut -d: -f2
+
+7. Apresente o conteudo do arquivo texto criado, com linhas numeradas.
+	cat -n example.txt
+
+8. Apresente as 15 primeiras linhas do arquivo texto criado.
+	head -n 15 example.txt
+
+9. Apresente as 10 últimas linhas do arquivo texto criado.
+	tail example.txt.
+
+	Imprimir as 15 ultimas linhas de um arquivo
+	tail -n 15 example.txt.
+
+10. Crie um arquivo texto na pasta /home que contenha itens de uma lista de compras, onde cada item
+deve estar em uma linha.
+	cat > listaCompra.txt
+	"Escrita de conteudo"
+	ctrl + C
+
+11. Liste, no terminal, o conteúdo deste arquivo em ordem alfabética.
+	sort listaCompra.txt
+
+12. Reverta a ordem de apresentação do item da questão anterior.
+	sort -r listaCompra.txt
+
+13. Crie um novo arquivo texto contendo o primeiro nome de todos os alunos da turma de sistemas
+operacionais do seu semestre.
+
+	cat > listaAluno.txt
+	"Escrita de conteudo"
+	ctrl + C
+
+14. Usando um comando apresente apenas os nomes distintos desta lista.
+	uniq listaAluno.txt
+
+15. Usando um comando no terminal, concatene o conteúdo do arquivo da lista de compras com o
+conteúdo dos alunos da turma de SO em um terceiro arquivo.
+	cat listaCompra.txt listaAluno.txt > listaConcatenada.txt
+
+16. Apresente o conteúdo do terceiro arquivo em tela.
+	more listaConcatenada.txt
+
+17. Usando o comando find, liste todos os arquivos da pasta /etc com extensão .conf
+	cd /etc
+	find -r *.conf
+
+18. Como você poderia alterar o comando anterior para incluir as subpastas?
+	find ./ -maxdepth 2 -name "*.conf"
+
+19. Exemplifique como é possível delimitar a quantidade de subpastas a ser listada com o comando find.
+	find ./ -maxdepth 2 -name "*.conf"
+	-maxdepth: determina a quantidade de subpastas
+
+20. Use o comando find para listar apenas os arquivos da pasta /etc
+	cd /etc
+	find -path ‘./etc/*’
+
+21. Agora, use o mesmo comando para listar apenas os diretórios da mesma pasta /etc
+	cd /etc
+	find -path ‘./etc/*’
+
+22. Use o comando find para localizar arquivos modificados nos últimos dois meses.
+	find ./ -iname "*" -atime  -60
+
+	Localiza os arquivos modificados nos ultimos 2 meses com extensão .conf
+	find ./ -iname "*.conf" -atime  -60 -type f
+
